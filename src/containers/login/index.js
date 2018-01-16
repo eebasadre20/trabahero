@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Checkbox, Col } from 'antd';
-import { userActions } from '../actions';
+import { login } from '../../actions/session.actions';
 import './index.css'
 
 const FormItem = Form.Item;
@@ -23,7 +23,7 @@ class LoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        dispatch(userActions.login(values.userName, values.password));
+        this.props.dispatch(login(values.userName, values.password));
       }
     });
   }

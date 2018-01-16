@@ -1,6 +1,6 @@
-import { userConstants } from '../constants';
-import { userService } from '../services';
-import { flashMesssages } from './';
+import { userConstants } from '../constants/user.constants';
+import { userService } from '../services/user.service';
+// import { flashMesssages } from './flash.message.actions';
 import axios from 'axios';
 
 export function login(username, password) {

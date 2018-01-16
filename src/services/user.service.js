@@ -1,13 +1,13 @@
-import { authHeader } from '../helpers';
+import { authHeader } from '../helpers/auth.header';
 
 export const userService = {
   login,
-  logout,
-  register,
-  getAll,
-  getById,
-  update,
-  delete: _delete
+//   logout,
+//   register,
+//   getAll,
+//   getById,
+//   update,
+//   delete: _delete
 };
 
 function login(username, password) {
