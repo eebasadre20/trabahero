@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import RegisterAsTrabaheroForm from './registerForm'
-import { registerTrabahero } from '../../actions/trabahero.actions'
+import RegisterAsTrabaheroForm from '../../components/Trabahero/PreRegistration/PreRegistrationFormPage'
+import { createTrabahero, trabaheroCreated } from '../../actions/trabahero.actions'
 
 class RegisterAsTrabaheroPage extends Component {
   render(){
     return (
-      <RegisterAsTrabaheroForm/>
+      <RegisterAsTrabaheroForm registerTrabahero={ this.props.registerTrabahero } trabaheroCreated={ this.props.trabaheroCreated } trabahero={ this.props.trabahero } history={ this.props.history }/>
     )
   }
 }
@@ -16,15 +16,16 @@ class RegisterAsTrabaheroPage extends Component {
 // }
 
 const mapStateToProps = (state) => {
-  return {
-
-  }
+  return state;
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRegisterTrabahero: () => {
-      console.log('Register trabahero');
+    registerTrabahero: (data) => {
+      return dispatch(createTrabahero(data));
+    },
+    trabaheroCreated: (data) => {
+      return dispatch(trabaheroCreated(data));
     }
   }
 }

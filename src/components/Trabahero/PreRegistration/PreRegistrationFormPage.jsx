@@ -7,7 +7,7 @@ const Option = Select.Option;
 
 let formData = new FormData();
 
-class RegisterAsTrabaheroForm extends Component {
+class PreRegistrationFormPage extends Component {
   constructor(props) {
     super(props)
     this.props = props;
@@ -50,7 +50,6 @@ class RegisterAsTrabaheroForm extends Component {
             this.props.trabaheroCreated(response.data);
             setTimeout(hide, 0);
             message.success('Successfully Pre-register!', 1.5, () => {
-              console.log('Redirecting!');
               this.props.history.push('/pre-registration/thank-you');
             });
           })
@@ -182,5 +181,5 @@ class RegisterAsTrabaheroForm extends Component {
   }
 }
 
-const WrappedRegisterAsTrabaheroForm = Form.create()(RegisterAsTrabaheroForm)
-export default WrappedRegisterAsTrabaheroForm;
+const WrappedPreRegistrationFormPage = Form.create()(PreRegistrationFormPage)
+export default WrappedPreRegistrationFormPage;
