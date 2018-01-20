@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Col, Row } from 'antd';
 
 class SkillsDetailsForm extends Component {
   render() {
     return (
-      <div>
-        <h1>Skills Details Form</h1>
-      </div>
+      <Col span={ 16 }>
+
+      </Col>
     );
   }
 }
