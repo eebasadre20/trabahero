@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 class ThankYouPage extends Component {
   componentWillMount() {
-    debugger;
-    console.log(this.props.history.entries[this.props.history.index - 1]);
+    // debugger;
+    // console.log(this.props.history.entries[this.props.history.index - 1]);
   }
 
   render() {

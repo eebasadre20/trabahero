@@ -4,14 +4,17 @@ import { Route, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import Login from '../login';
 import RegisterAsTrabaHero from '../register-as-trabahero';
-import PreRegistrationThankYou from '../../components/Trabahero/PreRegistrationSuccess/ThankYouPage'
+import PreRegistrationThankYou from '../../components/Trabahero/PreRegistrationSuccess/ThankYouPage';
+import HubPanel from '../../components/Hub/AdminPanel/components/index';
 
 import './index.css'
 
-const { Header, Footer, Content } = Layout;
+const { Header, Footer, Content, Sider } = Layout;
 
 const App = () => (
   <div>
+    <HubPanel />
+  { /** 
     <Layout>
       <Header>
         <div className="trabaheroLogo"></div>
@@ -32,8 +35,9 @@ const App = () => (
         <Route exact path="/pre-registration/thank-you" component={withRouter(PreRegistrationThankYou)} />
       </Content>
 
-      <Footer>Footer</Footer>
+    <Footer>Footer</Footer>
     </Layout>
+  */ }
   </div>
 )
 
