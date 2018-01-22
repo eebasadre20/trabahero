@@ -32,7 +32,7 @@ class Sidebar extends Component {
             <Menu.Item key="5">Logout</Menu.Item>
           </SubMenu>
           <Menu.Item key="1">
-            <Link to="/hub/new/trabahero">
+            <Link to="/">
               <Icon type="user-add" />
               <span>New Trabahero</span>
             </Link>

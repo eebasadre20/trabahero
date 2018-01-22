@@ -20,7 +20,7 @@ class SiderDemo extends Component {
           <Header style={{ background: '#fff', padding: 0 }} />
           <Switch>
             <NewTrabahero>
-                <Route exact path="/hub/new/trabahero" component={PersonalDetailsForm} />
+                <Route exact path="/" component={PersonalDetailsForm} />
                 <Route path="/hub/new/trabahero/:trabaheroId/skill-details" component={SkillsDetailsForm} />
                 <Route path="/hub/new/trabahero/:trabaheroId/certificates-clearances" component={CertificatesAndClearancesForm} />
             </NewTrabahero>
