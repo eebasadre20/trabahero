@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox, Select, DatePicker, message, Col, Row, Divider, Upload } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Select, DatePicker, message, Col, Row, Divider, Upload, Rate } from 'antd';
+import './SkillsForm.css';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -9,15 +10,55 @@ class TrabaheroSkillsForm extends Component {
     super();
     this.state = {
       isSkillCategorySelected: false,
+      skillsSelected: [],
     }
   }
 
-  onSelectSkillCategory = (e) => {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    debugger;
+  }
 
+  onSelectSkillCategory = (e) => {
+    this.setState({
+      isSkillCategorySelected: !this.state.isSkillCategorySelected
+    });
+  }
+
+  onSelectSkills = (skills) => {
+   this.setState({
+     skillsSelected: skills
+   });
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
+
+    const tailFormItemLayout = {
+      wrapperCol: {
+        xs: {
+          span: 24,
+          offset: 0,
+        },
+        sm: {
+          span: 6,
+          offset: 18,
+        },
+      },
+    };
+
+    const skillsRatePanel = this.state.skillsSelected.map( skill => (
+      <FormItem>
+          { getFieldDecorator('skill_rate', {
+            rules: [{ required: true, message: 'Please rate your skills.' }]
+          })(
+            <Row>
+              <Col span={ 8 }>{ skill }</Col>
+              <Col span={ 16 }><Rate /></Col>
+            </Row>
+          )}
+      </FormItem>
+    ));
 
     return (
       <Form layout="vertical" onSubmit={this.handleSubmit}>
@@ -27,7 +68,7 @@ class TrabaheroSkillsForm extends Component {
             <FormItem
               label="Skill Category"
             >
-            <Col span={ 16 }>
+            <Col span={ 24 }>
               { getFieldDecorator('skill_category', {
                 rules: [{ required: true, message: 'Please choose your skill category.' }],
               })(
@@ -43,23 +84,37 @@ class TrabaheroSkillsForm extends Component {
             <FormItem
               label="Skills"
             >
-            <Col span={ 16 }>
+            <Col span={ 24 }>
               { getFieldDecorator('skills', {
                 rules: [{ required: true, message: 'Please choose your skills.' }],
               })(
                 <Select
                   mode="multiple"
-                  style={{ width: '100%' }}
-                  placeholder="Please select"
+                  placeholder="Select skill based on the category choosen"
+                  size="large"
+                  disabled={ !this.state.isSkillCategorySelected }
+                  onChange={ this.onSelectSkills }
                 >
                   <Option value="House Cleaning">House Cleaning</Option>
                   <Option value="Automotive">Automotive</Option>
                   <Option value="Electrical">Electrical</Option>
+                  <Option value="Plumber">Plumber</Option>
+                  <Option value="Mechanic">Mechanic</Option>
                 </Select>
               )}
             </Col>
             </FormItem>
           </Col>
+          <Col span={ 2 }></Col>
+          <Col span={ 14 }>
+            { skillsRatePanel }
+          </Col>
+        </Row>
+
+        <Row>
+          <FormItem {...tailFormItemLayout}>
+            <Button type="primary" size="large" htmlType="submit">Submit</Button>
+          </FormItem>
         </Row>
       </Form>
     );
