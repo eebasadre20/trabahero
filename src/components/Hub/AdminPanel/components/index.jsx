@@ -21,7 +21,7 @@ class SiderDemo extends Component {
           <Switch>
             <NewTrabahero>
                 <Route exact path="/" component={PersonalDetailsForm} />
-                <Route path="/hub/new/trabahero/:trabaheroId/skill-details" component={SkillsDetailsForm} />
+                <Route path="/hub/new/trabahero/:trabaheroId/skill" component={SkillsDetailsForm} />
                 <Route path="/hub/new/trabahero/:trabaheroId/certificates-clearances" component={CertificatesAndClearancesForm} />
             </NewTrabahero>
           </Switch>

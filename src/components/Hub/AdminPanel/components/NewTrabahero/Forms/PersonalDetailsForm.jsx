@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router'
 import { Form, Icon, Input, Button, Checkbox, Select, DatePicker, message, Col, Row, Divider, Upload } from 'antd';
 import './PersonalInformation.css';
 
@@ -7,10 +8,11 @@ const Option = Select.Option;
 
 class PersonalDetailsForm extends Component {
 
-  onSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
+        this.props.history.push('/hub/new/trabahero/1/skill');
         console.log('Received values of form: ', values);
       }
     });
@@ -231,7 +233,9 @@ class PersonalDetailsForm extends Component {
            { uploadButton }
           </Upload>
           </Col>
+        </Row>
 
+        <Row>
           <FormItem {...tailFormItemLayout}>
             <Button type="primary" size="large" htmlType="submit">Submit</Button>
           </FormItem>
@@ -242,4 +246,4 @@ class PersonalDetailsForm extends Component {
 }
 
 const WrappedPersonalDetailsForm = Form.create()(PersonalDetailsForm)
-export default WrappedPersonalDetailsForm;
+export default withRouter(WrappedPersonalDetailsForm);
